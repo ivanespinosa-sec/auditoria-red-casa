@@ -6,7 +6,7 @@ Las capturas siguen el orden real en el que hice cada paso. Debajo de cada escan
 
 ## Alcance y herramientas
 
-| | |
+|Dato |Detalle |
 |---|---|
 | Red analizada | Mi red doméstica, con conocimiento de mi familia. Rango `192.168.1.0/24` |
 | Equipo | MacBook (macOS 15.6.1), desde la app Terminal |
@@ -410,16 +410,16 @@ nmap -T4 --top-ports 100 192.168.1.0/24 -oN ~/Desktop/escaneo-puertos-despues.tx
 
 **Dispositivos encontrados (`-sn`): 8**
 
-| IP | Dispositivo | ¿Estaba antes? |
+| IP | Dispositivo | ¿Visto antes? |
 |---|---|---|
-| .1 | Router | Sí |
-| .128 | Apple TV | Sí |
-| .130 | Repetidor | Sí |
-| .134 | Ordenador de sobremesa (a través del repetidor) | **Nuevo** |
-| .136 | Mi iPhone | Sí (en la repetición del paso 3) |
-| .145 | Alexa | Sí |
-| .147 | Mi MacBook | Sí |
-| .150 | iPhone de mi madre | **Nuevo** |
+| .1 | Router | Sí, en los escaneos de la Fase 1 |
+| .128 | Apple TV | Sí, en los escaneos de la Fase 1 |
+| .130 | Repetidor | Sí, en los escaneos de la Fase 1 |
+| .134 | Ordenador de sobremesa (a través del repetidor) | No, nuevo en este escaneo |
+| .136 | Mi iPhone | Sí, en la repetición del paso 3 |
+| .145 | Alexa | Sí, en los escaneos de la Fase 1 |
+| .147 | Mi MacBook | Sí, en los escaneos de la Fase 1 |
+| .150 | iPhone de mi madre | Nuevo en un escaneo, pero ya lo había visto en el panel del router (Fase 2) |
 
 La televisión (.131) no apareció porque estaba apagada.
 
@@ -430,11 +430,11 @@ La televisión (.131) no apareció porque estaba apagada.
 | .1 | Router | 53, 80, 443, 49152 | 53, 80, 443 |
 | .128 | Apple TV | 5000, 49152, 49153 | 5000, 49152, 49153 (sin cambios) |
 | .130 | Repetidor | 22, 80 | 22, 80 (sin cambios) |
-| .144 | Galaxy de mi hermano | – (no apareció) | Ninguno |
+| .144 | Galaxy de mi hermano | – (no salió en el escaneo; sí en el panel del router) | Ninguno |
 | .147 | Mi MacBook | 5000 | 5000 (sin cambios) |
-| .150 | iPhone de mi madre | – (no apareció) | 49152 |
+| .150 | iPhone de mi madre | – (no salió en el escaneo; sí en el panel del router) | 49152 |
 
-- **Router:** el puerto 49152 ya no aparece. Coincide con haber desactivado UPnP, aunque cambié varios ajustes a la vez y no puedo atribuirlo a uno solo.
+- **Router:** el puerto 49152 ya no aparece en el router. Coincide con haber desactivado UPnP, aunque cambié varios ajustes a la vez y no puedo atribuirlo a uno solo. El 49152 que sale en el iPhone de mi madre es de ese dispositivo, no del router: es un puerto que muchos aparatos usan para sus propios servicios, así que no tiene relación con el UPnP del router.
 - **Número de dispositivos:** antes salieron 6 (7 en la repetición) y después 8. La diferencia se debe a que había distinta gente en casa y a que los móviles en reposo a veces no contestan.
 
 **Hallazgos nuevos**
@@ -467,10 +467,10 @@ Todo el análisis se hizo desde dentro de mi red, que era el objetivo del proyec
 
 # Aprendizajes
 - **He aprendido a usar nmap.** Antes no lo había usado, y ahora sé descubrir los dispositivos de una red, ver sus puertos y averiguar qué hay detrás de cada uno con comandos como `-sn`, `--top-ports`, `-sV` o `-Pn`.
-- **Hay muchísimos puertos y conexiones que no conocía.** DNS, SSH, AirPlay, los puertos altos tipo 49152… Cada dispositivo de casa tiene sus propias "puertas" abiertas, y no siempre sabes por qué.
+- **Hay muchos puertos y conexiones que no conocía.** DNS, SSH, AirPlay, los puertos altos tipo 49152… Cada dispositivo de casa tiene sus propias "puertas" abiertas, y no siempre sabes por qué.
 - **Un router tiene mucho más de lo que parece.** A simple vista es una caja con luces, pero dentro hay cortafuegos, DMZ, reenvío de puertos, registros, gestión remota del operador…
-- **He descubierto funciones que desconocía, como WPS o UPnP.** Vienen activadas de fábrica para hacerlo todo más cómodo, pero no son lo más seguro, así que las he desactivado.
-- **No hay que fiarse de la primera idea.** Estaba convencido de que la .130 era mi iPhone y era el repetidor. Mirando los puertos, la MAC y el nombre en el router salí de dudas.
+- **He descubierto funciones que desconocía, como WPS o UPnP.** Vienen activadas de fábrica para hacerlo todo más cómodo, pero no significa que sean lo más seguro.
+- **Poner a prueba mis propias ideas.** Estaba convencido de que la .130 era mi iPhone y era el repetidor. Mirando los puertos, la MAC y el nombre en el router salí de dudas.
 - **Un escaneo no lo ve todo.** Los móviles en reposo a veces no responden y usan MAC aleatorias, así que conviene repetir el escaneo y compararlo con la lista del router.
 - **La IP no sirve para identificar un dispositivo**, porque puede cambiar. La MAC y el nombre que aparece en el router son más fiables.
 - **Medir la velocidad no es tan sencillo.** La conexión fluctúa según la hora y lo que se esté usando en casa, así que es complicado sacar una medición exacta.
