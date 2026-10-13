@@ -1,0 +1,19 @@
+# Nmap 7.991 scan initiated Thu Oct  8 20:26:18 2026 as: nmap -sn -oN /Users/mcivan/Desktop/escaneo-dispositivos.txt 192.168.1.0/24
+Nmap scan report for 192.168.1.1
+Host is up (0.0039s latency).
+MAC Address: 88:0F:A2:58:BE:9F (Sagemcom Broadband SAS)
+Nmap scan report for 192.168.1.128
+Host is up (0.027s latency).
+MAC Address: 90:DD:5D:B0:B4:26 (Apple)
+Nmap scan report for 192.168.1.130
+Host is up (0.097s latency).
+MAC Address: 32:DE:4B:01:F8:E6 (Unknown)
+Nmap scan report for 192.168.1.131
+Host is up (0.032s latency).
+MAC Address: BC:5C:17:CD:2D:92 (Qingdao Intelligent&Precise Electronics)
+Nmap scan report for 192.168.1.145
+Host is up (0.13s latency).
+MAC Address: 28:73:F6:3F:C8:13 (Amazon Technologies)
+Nmap scan report for 192.168.1.147
+Host is up.
+# Nmap done at Thu Oct  8 20:26:22 2026 -- 256 IP addresses (6 hosts up) scanned in 3.59 seconds

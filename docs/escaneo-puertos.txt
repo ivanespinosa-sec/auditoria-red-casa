@@ -1,0 +1,32 @@
+# Nmap 7.991 scan initiated Thu Oct  8 20:41:22 2026 as: nmap -T4 --top-ports 100 -oN /Users/mcivan/Desktop/escaneo-puertos.txt 192.168.1.0/24
+Nmap scan report for 192.168.1.1
+Host is up (0.0053s latency).
+Not shown: 54 closed tcp ports (conn-refused), 42 filtered tcp ports (no-response)
+PORT      STATE SERVICE
+53/tcp    open  domain
+80/tcp    open  http
+443/tcp   open  https
+49152/tcp open  unknown
+
+Nmap scan report for 192.168.1.128
+Host is up (0.0063s latency).
+Not shown: 97 closed tcp ports (conn-refused)
+PORT      STATE SERVICE
+5000/tcp  open  upnp
+49152/tcp open  unknown
+49153/tcp open  unknown
+
+Nmap scan report for 192.168.1.130
+Host is up (0.013s latency).
+Not shown: 98 filtered tcp ports (no-response)
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+Nmap scan report for 192.168.1.147
+Host is up (0.000056s latency).
+Not shown: 99 closed tcp ports (conn-refused)
+PORT     STATE SERVICE
+5000/tcp open  upnp
+
+# Nmap done at Thu Oct  8 20:41:52 2026 -- 256 IP addresses (4 hosts up) scanned in 30.14 seconds
